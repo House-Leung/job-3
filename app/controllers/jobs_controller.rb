@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   beforc_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @jobs = Job.all
+    @jobs = Job.where(:is_hidden => false).order("created_at DESC")
   end
 
   def show
